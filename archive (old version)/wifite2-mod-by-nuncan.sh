@@ -19,11 +19,6 @@ cd src/
 make
 make install 
 cd
-wget http://download.aircrack-ng.org/aircrack-ng-1.2-beta1.tar.gz tar -zxvf aircrack-ng-1.2-beta1.tar.gz 
-cd aircrack-ng-1.2-beta1 
-make
-make install
-cd
 git clone https://github.com/hashcat/hashcat
 cd hashcat
 git submodule update –init
@@ -38,10 +33,10 @@ make
 make install 
 cd
 dpkg --configure -a
-git clone https://github.com/derv82/wifite2.git
+git clone https://github.com/nuncan/wifite2mod
 cd wifite2
 git pull
-sudo python setup.py install
+sudo python3 setup.py
 cd
 git clone https://github.com/ZerBea/hcxdumptool
 git clone https://github.com/ZerBea/hcxtools
@@ -73,4 +68,7 @@ cd
 apt-get install wireshark -y
 apt-get install wireless-tools -y
 apt-get install macchanger -y
+
+
+
 exit
