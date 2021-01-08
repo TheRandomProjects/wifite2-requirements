@@ -35,6 +35,26 @@
 #checkinternet
 #sleep 2
 
+
+# NEW CODE #
+# to skip any questions from APT
+export DEBIAN_FRONTEND=noninteractive
+
+AUTO_SIGNUP=0
+
+while getopts "a" opt; do
+	case $opt in
+	a)
+	    AUTO_SIGNUP=1
+	    ;;
+	esac
+done
+
+if [ "$(id -u)" != "0" ]; then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
 #int the script, like update and upgrade
 apt-get update 
 apt-get upgrade -y
@@ -117,7 +137,9 @@ apt-get install wireless-tools -y
 apt-get install macchanger -y
 apt-get install wireshark -y
 sleep 2
-echo "THANKS FOR USING MY SCRIPT,DONATE SOME BTC TO SUPPORT ME :D (BTC 3CQFyuKYzsarYZcYxMfsJBmzNGcuRQURSu)"
+clear
+echo "THANKS FOR USING MY SCRIPT,DONATE SOME BTC TO SUPPORT ME :D (BTC: 3CQFyuKYzsarYZcYxMfsJBmzNGcuRQURSu)"
+echo "Installation and configuration completed!"
 
 #THANKS FOR USING MY SCRIPT, 
 #PLS STAR AND DONATE SOME BTC TO SUPPORT ME :D 
