@@ -1,7 +1,7 @@
 #!/bin/bash
 
+#This Script comes with ABSOLUTELY NO WARRANTY!
 
-# NEW CODE #
 # to skip any questions from APT
 export DEBIAN_FRONTEND=noninteractive
 
@@ -16,22 +16,19 @@ while getopts "a" opt; do
 done
 
 if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root" 1>&2
+   echo "This script must be run as root!" 1>&2
    exit 1
 fi
 
-##Unstable
+##Internet Check 
 
 wget -q --spider http://alive.thecatcloud.de
 
 if [ $? -eq 0 ]; then
     echo "Online"
 else
-    echo "Offline"
+   echo "For some reason you are offline or the killswitch of the script has been activated"
 fi
-
-##End Of unstable 
-
 
 
 #int the script, like update and upgrade
@@ -40,6 +37,7 @@ apt-get upgrade -y
 
 #Install all things that can be installed by apt
 apt install git -y 
+apt install figlet toilet -y 
 apt-get install aircrack-ng -y
 apt-get install libssl-dev -y
 apt install libz-dev -y 
@@ -64,7 +62,7 @@ cd
 git clone https://github.com/aanarchyy/bully
 wget http://download.aircrack-ng.org/aircrack-ng-1.2-beta1.tar.gz tar -zxvf aircrack-ng-1.2-beta1.tar.gz 
 wget https://github.com/aanarchyy/bully/archive/master.zip && unzip master.zip
-git clone https://github.com/derv82/wifite2.git
+git clone https://github.com/KatzeMau/wifite2
 git clone https://github.com/ZerBea/hcxdumptool
 git clone https://github.com/ZerBea/hcxtools
 git clone https://github.com/JPaulMora/Pyrit
@@ -149,12 +147,19 @@ apt-get install wireshark -y
 apt-get install wireless-tools -y
 apt-get install macchanger -y
 apt-get install wireshark -y
+
+clear
+sleep 1
+clear 
 sleep 2
-echo "THANKS FOR USING MY SCRIPT,DONATE SOME BTC TO SUPPORT ME :D (BTC: 3CQFyuKYzsarYZcYxMfsJBmzNGcuRQURSu)"
+#Nice GUI "Thanks for using Wifite2Requirements" 
+figlet Thanks for using Wifite2Requirements
+
+echo "THANKS FOR USING MY SCRIPT,DONATE SOME BTC TO SUPPORT ME :D (BTC: 16e9QmCEFbSm7fdJE8qHA8tuGyBSD8goBt)"
 echo "Installation and configuration completed!"
 
 #THANKS FOR USING MY SCRIPT, 
 #PLS STAR AND DONATE SOME BTC TO SUPPORT ME :D 
-#BTC 3CQFyuKYzsarYZcYxMfsJBmzNGcuRQURSu
+#BTC 16e9QmCEFbSm7fdJE8qHA8tuGyBSD8goBt
 
 exit
